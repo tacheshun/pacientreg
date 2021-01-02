@@ -4,9 +4,9 @@
             <h1 .header>
                 PacientReg
             <h2>
-                Sistem inregistrare analize medicale
-            <a href="http://www.yesodweb.com/book/" .btn.btn-info.btn-lg>
-                Read the Book
+                Sistem online pentru înregistrarea pacientilor si buletinelor de analize
+            <a href="#" .btn.btn-danger.btn-lg>
+                Adauga buletin
 
 <div .container>
     <!-- Starting
