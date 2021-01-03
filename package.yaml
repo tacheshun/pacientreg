@@ -42,6 +42,8 @@ dependencies:
 - case-insensitive
 - wai
 - foreign-store
+- markdown
+- yesod-text-markdown
 
 # The library contains all of our application code. The executable
 # defined below is just a thin wrapper.

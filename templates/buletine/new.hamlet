@@ -1,0 +1,7 @@
+ <p>Previous result: #{show res}
+<h1> Adaugare buletin de analize
+
+<form method=post action=@{BuletinNewR} enctype=#{enctype}>
+^{widget}
+<button clas"btn btn-default">Salveaza!
+<hr>

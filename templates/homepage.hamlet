@@ -5,7 +5,7 @@
                 PacientReg
             <h2>
                 Sistem online pentru înregistrarea pacientilor si buletinelor de analize
-            <a href="#" .btn.btn-danger.btn-lg>
+            <a href="/buletine/new" .btn.btn-danger.btn-lg>
                 Adauga buletin
 
 <div .container>
