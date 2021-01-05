@@ -14,8 +14,3 @@ stack exec -- yesod devel
 ```
 
 As your code changes, your site will be automatically recompiled and redeployed to localhost.
-
-## Documentation
-
-* Read the [Yesod Book](https://www.yesodweb.com/book) online for free
-
