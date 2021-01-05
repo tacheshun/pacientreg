@@ -1,0 +1,4 @@
+<h1>#{transcriptTitle transcript}
+
+<article .jumbotron>
+#{transcriptRezultat transcript}

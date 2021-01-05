@@ -31,6 +31,6 @@ postBuletinNewR = do
     ((res, widget), enctype) <- runFormPost $ renderBootstrap3 BootstrapBasicForm transcriptForm
     case res of 
         FormSuccess transcript -> do
-            _ <- runDB $ insert transcript
-            error "todo"
+            transcriptId <- runDB $ insert transcript
+            redirect $ BuletinDetaliuR transcriptId
         _ -> defaultLayout $(widgetFile "buletine/new")
