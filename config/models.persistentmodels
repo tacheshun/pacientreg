@@ -16,3 +16,14 @@ Comment json -- Adding "json" causes ToJSON and FromJSON instances to be derived
     userId UserId Maybe
     deriving Eq
     deriving Show
+
+Transcript 
+    title Text
+    data_recoltarii Day
+    rezultat Textarea
+    opinii Textarea
+    tip_proba Text
+    pacient_email Text
+    activ Bool
+    deriving Show
+

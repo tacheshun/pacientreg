@@ -7,37 +7,30 @@
 module Handler.BuletinNew where
 
 import Import
+import Yesod.Form.Bootstrap3
 
-newtype UserId = UserId Int
-    deriving Show
-
-
-type Form a = Html -> MForm Handler (FormResult a, Widget)
-
-data Transcript = Transcript
-        { title                      :: Text
-            , data_recoltarii        :: Day
-            , rezultat               :: Textarea
-            , pacient_id             :: Handler.BuletinNew.UserId
-            , opinii_si_interpretari :: Textarea
-        }
-        deriving Show
-
-form :: Handler.BuletinNew.UserId -> Handler.BuletinNew.Form Transcript
-form userId = renderDivs $ Transcript
+transcriptForm :: AForm Handler Transcript
+transcriptForm = Transcript
     <$> areq textField "Title" Nothing
     <*> areq dayField "Data Recoltarii" Nothing
     <*> areq textareaField "Rezultat" Nothing
-    <*> pure userId
-    <*> areq textareaField "Opinii si interpretari" Nothing
+    <*> areq textareaField "Opinii"  Nothing
+    <*> areq emailField "Email pacient" Nothing
+    <*> areq textField "Tip Proba" Nothing
+    <*> areq checkBoxField "Publicam Buletinul de analize?" Nothing
 
 getBuletinNewR :: Handler Html
 getBuletinNewR = do
-    let userId = Handler.BuletinNew.UserId 5
-    ((res, widget), enctype) <- runFormPost $ form userId
+    (widget, enctype) <- generateFormPost $ renderBootstrap3 BootstrapBasicForm transcriptForm
     defaultLayout $ do
         $(widgetFile "buletine/new")
 
 
 postBuletinNewR :: Handler Html
-postBuletinNewR = getBuletinNewR
+postBuletinNewR = do
+    ((res, widget), enctype) <- runFormPost $ renderBootstrap3 BootstrapBasicForm transcriptForm
+    case res of 
+        FormSuccess transcript -> do
+            _ <- runDB $ insert transcript
+            error "todo"
+        _ -> defaultLayout $(widgetFile "buletine/new")
